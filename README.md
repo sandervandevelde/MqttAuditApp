@@ -1,8 +1,8 @@
-# MqttAuditApp
+# Azure EventGrid namespace Mqtt Audit App
 
 ## Introduction
 
-This tool can visualize all incoming MQTT messages on all topics. It simply listens to '#'.
+This tool can visualize all incoming Azure EventGrid namespace MQTT broker messages on all topics. It simply listens to '#'.
 
 Notice this only works when a device client is created with this ability.
 
