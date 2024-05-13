@@ -34,6 +34,7 @@
 			listBoxHistory = new ListBox();
 			panel1 = new Panel();
 			checkBoxFollowLastTopic = new CheckBox();
+			chartControlHistory = new Syncfusion.Windows.Forms.Chart.ChartControl();
 			((System.ComponentModel.ISupportInitialize)topicManagerBindingSource).BeginInit();
 			panel1.SuspendLayout();
 			SuspendLayout();
@@ -83,17 +84,46 @@
 			checkBoxFollowLastTopic.Text = "Follow Last Topic";
 			checkBoxFollowLastTopic.UseVisualStyleBackColor = true;
 			// 
+			// chartControl1
+			// 
+			chartControlHistory.ChartArea.CursorLocation = new Point(0, 0);
+			chartControlHistory.ChartArea.CursorReDraw = false;
+			chartControlHistory.IsWindowLess = false;
+			// 
+			// 
+			// 
+			chartControlHistory.Legend.Location = new Point(643, 31);
+			chartControlHistory.Legend.Visible = false;
+			chartControlHistory.Localize = null;
+			chartControlHistory.Location = new Point(592, 155);
+			chartControlHistory.Name = "chartControl1";
+			chartControlHistory.PrimaryXAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
+			chartControlHistory.PrimaryXAxis.Margin = true;
+			chartControlHistory.PrimaryYAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
+			chartControlHistory.PrimaryYAxis.Margin = true;
+			chartControlHistory.Size = new Size(800, 600);
+			chartControlHistory.TabIndex = 2;
+			// 
+			// 
+			// 
+			chartControlHistory.Title.Name = "Default";
+			chartControlHistory.ToolBar.ButtonSize = new Size(44, 44);
+			chartControlHistory.VisualTheme = "";
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(13F, 32F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1514, 842);
+			Controls.Add(chartControlHistory);
 			Controls.Add(listBoxHistory);
 			Controls.Add(treeViewtopics);
 			Controls.Add(panel1);
 			Name = "MainForm";
 			Text = "MQTT Audit";
 			Load += MainForm_Load;
+			Shown += MainForm_Shown;
+			Resize += MainForm_Resize;
 			((System.ComponentModel.ISupportInitialize)topicManagerBindingSource).EndInit();
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
@@ -106,5 +136,6 @@
 		private ListBox listBoxHistory;
 		private Panel panel1;
 		private CheckBox checkBoxFollowLastTopic;
+		private Syncfusion.Windows.Forms.Chart.ChartControl chartControlHistory;
 	}
 }

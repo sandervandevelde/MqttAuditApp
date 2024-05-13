@@ -11,7 +11,12 @@ namespace MqttAuditUIApp
 			// To customize application configuration such as set high DPI settings or default font,
 			// see https://aka.ms/applicationconfiguration.
 			ApplicationConfiguration.Initialize();
-			Application.Run(new MainForm());
+
+			Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("");
+
+			var form = new MainForm();
+
+			Application.Run(form);
 		}
 	}
 }

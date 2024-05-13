@@ -17,4 +17,8 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Chart.Windows" Version="25.2.3" />
+  </ItemGroup>
+
 </Project>

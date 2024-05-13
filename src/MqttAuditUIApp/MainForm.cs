@@ -2,6 +2,9 @@ using MQTTnet.Client.Extensions;
 using MQTTnet.Client;
 using MQTTnet;
 using MqttTopicManager;
+using System.Text;
+using System.Windows.Forms;
+using Syncfusion.Windows.Forms.Chart;
 
 namespace MqttAuditUIApp
 {
@@ -9,9 +12,17 @@ namespace MqttAuditUIApp
 	{
 		protected TopicManager _topicManager = new TopicManager();
 
+		ChartSeries _chartSeries;
+
+		bool _onceAlready = false;
+
 		public MainForm()
 		{
 			InitializeComponent();
+
+			_chartSeries = new ChartSeries("MQTT");
+			chartControlHistory.Series.Add(_chartSeries);
+			chartControlHistory.PrimaryXAxis.ValueType = ChartValueType.DateTime;
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -24,7 +35,7 @@ namespace MqttAuditUIApp
 			// LISTEN FOR INCOMING MESSAGES
 			mqttClient.ApplicationMessageReceivedAsync += (s) =>
 			{
-				Console.WriteLine($"Client '{s.ClientId}' received on topic '{s.ApplicationMessage.Topic}' the following message:\n{System.Text.Encoding.UTF8.GetString(s.ApplicationMessage.Payload)}");
+				Console.WriteLine($"Client '{s.ClientId}' received on topic '{s.ApplicationMessage.Topic}' the following message:\n{s.ApplicationMessage.ConvertPayloadToString()}");
 
 				_topicManager.Receive(s.ApplicationMessage.Topic, s.ApplicationMessage.ConvertPayloadToString());
 
@@ -43,13 +54,12 @@ namespace MqttAuditUIApp
 						treeViewtopics.Sort();
 					}
 
+					// force select if needed
 					if (checkBoxFollowLastTopic.Checked
 							|| treeViewtopics.SelectedNode.Name == s.ApplicationMessage.Topic)
 					{
 						treeViewtopics.SelectedNode = null;
 						treeViewtopics.SelectedNode = treeViewtopics.Nodes[s.ApplicationMessage.Topic];
-
-					//	treeViewtopics.Update();
 					}
 				});
 
@@ -63,12 +73,55 @@ namespace MqttAuditUIApp
 		{
 			listBoxHistory.Items.Clear();
 
+			_chartSeries.Points.Clear();
+
 			var orderedHistory = (e.Node.Tag as TopicHistory).OrderBy(x => x.Key);
 
-			foreach (var hist in orderedHistory)
+			// check if we need to show floats
+			float dummy;
+			var isFloat = float.TryParse(orderedHistory.First().Value, out dummy);
+
+			if (!isFloat)
 			{
-				listBoxHistory.Items.Add($"{hist.Key}\t{hist.Value}");
+				listBoxHistory.BringToFront();
+
+				// show json?
+				foreach (var hist in orderedHistory)
+				{
+					listBoxHistory.Items.Add($"{hist.Key}\t{hist.Value}");
+				}
 			}
+			else
+			{
+				// show floats
+				chartControlHistory.BringToFront();
+
+				foreach (var hist in orderedHistory)
+				{
+					_chartSeries.Points.Add(hist.Key, Convert.ToDouble(hist.Value));
+				}
+			}
+		}
+
+		private void MainForm_Resize(object sender, EventArgs e)
+		{
+			UpdateHistory();
+		}
+
+		private void MainForm_Shown(object sender, EventArgs e)
+		{
+			if (!_onceAlready)
+			{
+				_onceAlready = true;
+				UpdateHistory();
+				listBoxHistory.BringToFront();
+			}
+		}
+
+		private void UpdateHistory()
+		{
+			chartControlHistory.Location = listBoxHistory.Location;
+			chartControlHistory.Size = listBoxHistory.Size;
 		}
 	}
 }
