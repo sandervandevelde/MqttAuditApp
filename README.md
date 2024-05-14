@@ -16,7 +16,9 @@ Per topic, the last (default) 50 values are remembered. This number is adjustabl
 
 Using a checkbox on the same settings page, you can toggle between updating the preview to the last incoming topic value or following just one selected topic.
 
-A Topic filter can be set on the settings page so that only topics containing the value are shown. All messages will be received and stored even when the topic is filtered. Once a topic filter is removed or altered, topics with previously received messages are shown only when a new message is received. 
+A Topic filter can be set on the settings page so that only topics containing the value are shown. Messages will still be received and stored even when topics are filtered. Once a topic filter is removed or altered, topics with previously received messages are shown only when a new message is received. 
+
+The menu on the main page contains a Pause toggle. This pauses the representation of the incoming messages. Messages will still be received and stored even when the representation is paused. Once a pause is disabled, previously received messages are shown only when a new message is received. 
 
 ## MQTTnet client extensions
 
