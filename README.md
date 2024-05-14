@@ -10,7 +10,7 @@ Notice this only works when a device client is created with this ability.
 
 Depending on the first value received for a certain topic, a bar chart or a list box is shown:
 
-![image](https://github.com/sandervandevelde/MqttAuditApp/assets/694737/3041ea3e-33ce-4d38-b7d9-749993500112)
+![image](https://github.com/sandervandevelde/MqttAuditApp/assets/694737/abb7b58b-178e-4bd8-ac52-0d91dd1e6b8f)
 
 Per topic, the last (default) 50 values are remembered. This number is adjustable using the settings page.
 
