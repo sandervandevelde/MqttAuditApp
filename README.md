@@ -12,16 +12,17 @@ Depending on the first value received for a certain topic, a bar chart or a list
 
 ![image](https://github.com/sandervandevelde/MqttAuditApp/assets/694737/3041ea3e-33ce-4d38-b7d9-749993500112)
 
-Per topic, the last 50 values are remembered.
+Per topic, the last (default) 50 values are remembered. This number is adjustable using the settings page.
 
-Using a checkbox, you can toggle between updating the preview to the last incoming topic value or following just one selected topic.
-
+Using a checkbox on the same settings page, you can toggle between updating the preview to the last incoming topic value or following just one selected topic.
 
 ## MQTTnet client extensions
 
 This tool is built around the MQTTnet.Client.Extensions library, available at [GitHub](https://github.com/Azure-Samples/MqttApplicationSamples/tree/main/mqttclients/dotnet).
 
 This means you need to create an Azure EventGrid MQTT client and fill in the environment variables as seen [here](https://github.com/Azure-Samples/MqttApplicationSamples/tree/main/mqttclients).
+
+![image](https://github.com/sandervandevelde/MqttAuditApp/assets/694737/a9d395a4-7f98-454d-bf78-162ede182964)
 
 ## EventGrid namespace MQTT client
 
