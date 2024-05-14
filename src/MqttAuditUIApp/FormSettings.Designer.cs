@@ -33,6 +33,8 @@
 			buttonOK = new Button();
 			numericUpDownHistoryLength = new NumericUpDown();
 			labelHistoryLength = new Label();
+			labelTopicFilter = new Label();
+			textBoxTopicFilter = new TextBox();
 			((System.ComponentModel.ISupportInitialize)numericUpDownHistoryLength).BeginInit();
 			SuspendLayout();
 			// 
@@ -88,6 +90,22 @@
 			labelHistoryLength.TabIndex = 3;
 			labelHistoryLength.Text = "History length:";
 			// 
+			// labelTopicFilter
+			// 
+			labelTopicFilter.AutoSize = true;
+			labelTopicFilter.Location = new Point(80, 287);
+			labelTopicFilter.Name = "labelTopicFilter";
+			labelTopicFilter.Size = new Size(131, 32);
+			labelTopicFilter.TabIndex = 4;
+			labelTopicFilter.Text = "Topic filter:";
+			// 
+			// textBoxTopicFilter
+			// 
+			textBoxTopicFilter.Location = new Point(80, 339);
+			textBoxTopicFilter.Name = "textBoxTopicFilter";
+			textBoxTopicFilter.Size = new Size(240, 39);
+			textBoxTopicFilter.TabIndex = 5;
+			// 
 			// FormSettings
 			// 
 			AcceptButton = buttonOK;
@@ -95,6 +113,8 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			CancelButton = buttonCancel;
 			ClientSize = new Size(800, 450);
+			Controls.Add(textBoxTopicFilter);
+			Controls.Add(labelTopicFilter);
 			Controls.Add(labelHistoryLength);
 			Controls.Add(numericUpDownHistoryLength);
 			Controls.Add(buttonOK);
@@ -117,5 +137,7 @@
 		private Button buttonOK;
 		private NumericUpDown numericUpDownHistoryLength;
 		private Label labelHistoryLength;
+		private Label labelTopicFilter;
+		private TextBox textBoxTopicFilter;
 	}
 }

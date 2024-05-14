@@ -26,6 +26,7 @@ namespace MqttAuditUIApp
 
 			checkBoxFollowLastTopic.Checked = _config.FollowLastTopic;
 			numericUpDownHistoryLength.Value = _config.HistoryLength;
+			textBoxTopicFilter.Text = _config.TopicFilter;
 		}
 
 		private void FormSettings_FormClosing(object sender, FormClosingEventArgs e)
@@ -34,6 +35,7 @@ namespace MqttAuditUIApp
 			{
 				_config.FollowLastTopic = checkBoxFollowLastTopic.Checked;
 				_config.HistoryLength = Convert.ToInt32(numericUpDownHistoryLength.Value);
+				_config.TopicFilter = textBoxTopicFilter.Text;
 			}
 		}
 

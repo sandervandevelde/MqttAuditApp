@@ -5,6 +5,7 @@ using MqttTopicManager;
 using System.Text;
 using System.Windows.Forms;
 using Syncfusion.Windows.Forms.Chart;
+using System.Xml.Linq;
 
 namespace MqttAuditUIApp
 {
@@ -63,12 +64,34 @@ namespace MqttAuditUIApp
 						treeViewtopics.Sort();
 					}
 
-					// force select if needed
-					if (_config.FollowLastTopic
-							|| treeViewtopics.SelectedNode.Name == s.ApplicationMessage.Topic)
+					if (!string.IsNullOrWhiteSpace(_config.TopicFilter))
 					{
-						treeViewtopics.SelectedNode = null;
-						treeViewtopics.SelectedNode = treeViewtopics.Nodes[s.ApplicationMessage.Topic];
+						for (int i = treeViewtopics.Nodes.Count-1; i >=0 ; i--)
+						{
+							if (!treeViewtopics.Nodes[i].Name.Contains(_config.TopicFilter))
+							{
+								treeViewtopics.Nodes[i].Remove();
+							}
+						}
+					}
+
+					if (treeViewtopics.Nodes.Count == 0)
+					{
+						listBoxHistory.Items.Clear();
+						_chartSeries.Points.Clear();
+					}
+					else
+					{
+						// force tree node selection (switch to the right representation) if needed
+						if (_config.FollowLastTopic
+								|| treeViewtopics.SelectedNode.Name == s.ApplicationMessage.Topic)
+						{
+							if (treeViewtopics.Nodes.ContainsKey(s.ApplicationMessage.Topic))
+							{
+								treeViewtopics.SelectedNode = null;
+								treeViewtopics.SelectedNode = treeViewtopics.Nodes[s.ApplicationMessage.Topic];
+							}
+						}
 					}
 				});
 
@@ -81,7 +104,6 @@ namespace MqttAuditUIApp
 		private void treeViewtopics_AfterSelect(object sender, TreeViewEventArgs e)
 		{
 			listBoxHistory.Items.Clear();
-
 			_chartSeries.Points.Clear();
 
 			var orderedHistory = (e.Node.Tag as TopicHistory).OrderBy(x => x.Key);
