@@ -35,7 +35,8 @@
 			// 
 			// buttonClose
 			// 
-			buttonClose.Location = new Point(323, 383);
+			buttonClose.Anchor = AnchorStyles.Bottom;
+			buttonClose.Location = new Point(323, 433);
 			buttonClose.Name = "buttonClose";
 			buttonClose.Size = new Size(150, 46);
 			buttonClose.TabIndex = 0;
@@ -45,12 +46,13 @@
 			// 
 			// richTextBox1
 			// 
+			richTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			richTextBox1.BorderStyle = BorderStyle.None;
-			richTextBox1.Location = new Point(38, 33);
+			richTextBox1.Location = new Point(53, 33);
 			richTextBox1.Name = "richTextBox1";
 			richTextBox1.ReadOnly = true;
 			richTextBox1.ScrollBars = RichTextBoxScrollBars.None;
-			richTextBox1.Size = new Size(733, 315);
+			richTextBox1.Size = new Size(686, 365);
 			richTextBox1.TabIndex = 1;
 			richTextBox1.Text = resources.GetString("richTextBox1.Text");
 			// 
@@ -58,7 +60,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(13F, 32F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(800, 450);
+			ClientSize = new Size(800, 500);
 			Controls.Add(richTextBox1);
 			Controls.Add(buttonClose);
 			FormBorderStyle = FormBorderStyle.FixedToolWindow;

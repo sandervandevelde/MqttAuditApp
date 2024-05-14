@@ -122,6 +122,8 @@
 
 This tool can visualize all incoming Azure EventGrid namespace MQTT broker messages on all topics. It simply listens to '#'.
 
+Version 0.1 alpha.
+
 Created by Sander van de Velde under MIT license (2024).
 
 Check the repo at:
