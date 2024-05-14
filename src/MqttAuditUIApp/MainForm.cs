@@ -66,7 +66,7 @@ namespace MqttAuditUIApp
 
 					if (!string.IsNullOrWhiteSpace(_config.TopicFilter))
 					{
-						for (int i = treeViewtopics.Nodes.Count-1; i >=0 ; i--)
+						for (int i = treeViewtopics.Nodes.Count - 1; i >= 0; i--)
 						{
 							if (!treeViewtopics.Nodes[i].Name.Contains(_config.TopicFilter))
 							{
@@ -103,6 +103,11 @@ namespace MqttAuditUIApp
 
 		private void treeViewtopics_AfterSelect(object sender, TreeViewEventArgs e)
 		{
+			if (_config.Paused)
+			{
+				return;
+			}
+
 			listBoxHistory.Items.Clear();
 			_chartSeries.Points.Clear();
 
@@ -167,6 +172,11 @@ namespace MqttAuditUIApp
 			var formAbout = new FormAbout();
 
 			formAbout.ShowDialog();
+		}
+
+		private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			_config.Paused = pauseToolStripMenuItem.Checked;
 		}
 	}
 }

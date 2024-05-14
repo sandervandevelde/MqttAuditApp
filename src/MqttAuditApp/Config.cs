@@ -9,5 +9,7 @@ namespace MqttTopicManager
 		public bool FollowLastTopic { get; set; } = true;
 
 		public string TopicFilter { get; set; }
+
+		public bool Paused { get; set; }
 	}
 }
