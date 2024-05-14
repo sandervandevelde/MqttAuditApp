@@ -1,3 +1,5 @@
+using MqttTopicManager;
+
 namespace MqttAuditUIApp
 {
 	internal static class Program
@@ -14,7 +16,11 @@ namespace MqttAuditUIApp
 
 			Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("");
 
-			var form = new MainForm();
+			var config = new Config();
+
+			var _topicManager = new TopicManager(config);
+
+			var form = new MainForm(_topicManager, config);
 
 			Application.Run(form);
 		}

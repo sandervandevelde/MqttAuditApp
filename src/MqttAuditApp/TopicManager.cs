@@ -4,10 +4,14 @@ namespace MqttTopicManager
 {
 	public class TopicManager
 	{
+		private Config _config;
+
 		public Dictionary<string, TopicHistory> TopicHistories { get; private set; }
 
-        public TopicManager()
+        public TopicManager(Config config)
         {
+			_config = config;
+
 			TopicHistories = new Dictionary<string, TopicHistory>();
         }
 
@@ -15,17 +19,12 @@ namespace MqttTopicManager
 		{
 			if (!TopicHistories.Keys.Contains(topic))
 			{
-				var topicHistory = new TopicHistory(50);
+				var topicHistory = new TopicHistory();
 
 				TopicHistories.Add(topic, topicHistory);
 			}
 
-			var topicToUpdate = TopicHistories[topic];
-
-			topicToUpdate.Add(DateTime.Now,payload);
-
-			topicToUpdate.Trim();
+			TopicHistories[topic].Add(DateTime.Now, payload, _config.HistoryLength);
 		}
 	}
-
 }

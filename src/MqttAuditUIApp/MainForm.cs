@@ -10,11 +10,20 @@ namespace MqttAuditUIApp
 {
 	public partial class MainForm : Form
 	{
-		protected TopicManager _topicManager = new TopicManager();
+		Config _config;
+
+		private TopicManager _topicManager;
 
 		ChartSeries _chartSeries;
 
 		bool _onceAlready = false;
+
+		public MainForm(TopicManager topicManager, Config config) : this()
+		{
+			_topicManager = topicManager;
+
+			_config = config;
+		}
 
 		public MainForm()
 		{
@@ -55,7 +64,7 @@ namespace MqttAuditUIApp
 					}
 
 					// force select if needed
-					if (checkBoxFollowLastTopic.Checked
+					if (_config.FollowLastTopic
 							|| treeViewtopics.SelectedNode.Name == s.ApplicationMessage.Topic)
 					{
 						treeViewtopics.SelectedNode = null;
@@ -122,6 +131,20 @@ namespace MqttAuditUIApp
 		{
 			chartControlHistory.Location = listBoxHistory.Location;
 			chartControlHistory.Size = listBoxHistory.Size;
+		}
+
+		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var formSettings = new FormSettings(_config);
+
+			formSettings.ShowDialog();
+		}
+
+		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var formAbout = new FormAbout();
+
+			formAbout.ShowDialog();
 		}
 	}
 }

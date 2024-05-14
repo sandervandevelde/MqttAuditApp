@@ -32,10 +32,15 @@
 			topicManagerBindingSource = new BindingSource(components);
 			treeViewtopics = new TreeView();
 			listBoxHistory = new ListBox();
-			panel1 = new Panel();
-			checkBoxFollowLastTopic = new CheckBox();
 			chartControlHistory = new Syncfusion.Windows.Forms.Chart.ChartControl();
+			menuStrip1 = new MenuStrip();
+			toolStripMenuItemTools = new ToolStripMenuItem();
+			settingsToolStripMenuItem = new ToolStripMenuItem();
+			toolStripMenuItemHelp = new ToolStripMenuItem();
+			aboutToolStripMenuItem = new ToolStripMenuItem();
+			panel1 = new Panel();
 			((System.ComponentModel.ISupportInitialize)topicManagerBindingSource).BeginInit();
+			menuStrip1.SuspendLayout();
 			panel1.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -47,10 +52,10 @@
 			// 
 			treeViewtopics.Dock = DockStyle.Left;
 			treeViewtopics.FullRowSelect = true;
-			treeViewtopics.Location = new Point(0, 85);
+			treeViewtopics.Location = new Point(0, 43);
 			treeViewtopics.Name = "treeViewtopics";
 			treeViewtopics.PathSeparator = "/";
-			treeViewtopics.Size = new Size(752, 757);
+			treeViewtopics.Size = new Size(752, 799);
 			treeViewtopics.TabIndex = 0;
 			treeViewtopics.AfterSelect += treeViewtopics_AfterSelect;
 			// 
@@ -58,33 +63,12 @@
 			// 
 			listBoxHistory.Dock = DockStyle.Fill;
 			listBoxHistory.FormattingEnabled = true;
-			listBoxHistory.Location = new Point(752, 85);
+			listBoxHistory.Location = new Point(752, 43);
 			listBoxHistory.Name = "listBoxHistory";
-			listBoxHistory.Size = new Size(762, 757);
+			listBoxHistory.Size = new Size(762, 799);
 			listBoxHistory.TabIndex = 1;
 			// 
-			// panel1
-			// 
-			panel1.Controls.Add(checkBoxFollowLastTopic);
-			panel1.Dock = DockStyle.Top;
-			panel1.Location = new Point(0, 0);
-			panel1.Name = "panel1";
-			panel1.Size = new Size(1514, 85);
-			panel1.TabIndex = 1;
-			// 
-			// checkBoxFollowLastTopic
-			// 
-			checkBoxFollowLastTopic.AutoSize = true;
-			checkBoxFollowLastTopic.Checked = true;
-			checkBoxFollowLastTopic.CheckState = CheckState.Checked;
-			checkBoxFollowLastTopic.Location = new Point(20, 24);
-			checkBoxFollowLastTopic.Name = "checkBoxFollowLastTopic";
-			checkBoxFollowLastTopic.Size = new Size(226, 36);
-			checkBoxFollowLastTopic.TabIndex = 0;
-			checkBoxFollowLastTopic.Text = "Follow Last Topic";
-			checkBoxFollowLastTopic.UseVisualStyleBackColor = true;
-			// 
-			// chartControl1
+			// chartControlHistory
 			// 
 			chartControlHistory.ChartArea.CursorLocation = new Point(0, 0);
 			chartControlHistory.ChartArea.CursorReDraw = false;
@@ -96,7 +80,7 @@
 			chartControlHistory.Legend.Visible = false;
 			chartControlHistory.Localize = null;
 			chartControlHistory.Location = new Point(592, 155);
-			chartControlHistory.Name = "chartControl1";
+			chartControlHistory.Name = "chartControlHistory";
 			chartControlHistory.PrimaryXAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
 			chartControlHistory.PrimaryXAxis.Margin = true;
 			chartControlHistory.PrimaryYAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
@@ -110,6 +94,53 @@
 			chartControlHistory.ToolBar.ButtonSize = new Size(44, 44);
 			chartControlHistory.VisualTheme = "";
 			// 
+			// menuStrip1
+			// 
+			menuStrip1.ImageScalingSize = new Size(32, 32);
+			menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItemTools, toolStripMenuItemHelp });
+			menuStrip1.Location = new Point(0, 0);
+			menuStrip1.Name = "menuStrip1";
+			menuStrip1.Size = new Size(1514, 40);
+			menuStrip1.TabIndex = 1;
+			menuStrip1.Text = "menuStrip1";
+			// 
+			// toolStripMenuItemTools
+			// 
+			toolStripMenuItemTools.DropDownItems.AddRange(new ToolStripItem[] { settingsToolStripMenuItem });
+			toolStripMenuItemTools.Name = "toolStripMenuItemTools";
+			toolStripMenuItemTools.Size = new Size(89, 36);
+			toolStripMenuItemTools.Text = "Tools";
+			// 
+			// settingsToolStripMenuItem
+			// 
+			settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+			settingsToolStripMenuItem.Size = new Size(233, 44);
+			settingsToolStripMenuItem.Text = "Settings";
+			settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
+			// 
+			// toolStripMenuItemHelp
+			// 
+			toolStripMenuItemHelp.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
+			toolStripMenuItemHelp.Name = "toolStripMenuItemHelp";
+			toolStripMenuItemHelp.Size = new Size(84, 36);
+			toolStripMenuItemHelp.Text = "Help";
+			// 
+			// aboutToolStripMenuItem
+			// 
+			aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+			aboutToolStripMenuItem.Size = new Size(212, 44);
+			aboutToolStripMenuItem.Text = "About";
+			aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
+			// 
+			// panel1
+			// 
+			panel1.Controls.Add(menuStrip1);
+			panel1.Dock = DockStyle.Top;
+			panel1.Location = new Point(0, 0);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(1514, 43);
+			panel1.TabIndex = 1;
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(13F, 32F);
@@ -119,12 +150,16 @@
 			Controls.Add(listBoxHistory);
 			Controls.Add(treeViewtopics);
 			Controls.Add(panel1);
+			MainMenuStrip = menuStrip1;
 			Name = "MainForm";
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "MQTT Audit";
 			Load += MainForm_Load;
 			Shown += MainForm_Shown;
 			Resize += MainForm_Resize;
 			((System.ComponentModel.ISupportInitialize)topicManagerBindingSource).EndInit();
+			menuStrip1.ResumeLayout(false);
+			menuStrip1.PerformLayout();
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
 			ResumeLayout(false);
@@ -134,8 +169,12 @@
 		private BindingSource topicManagerBindingSource;
 		private TreeView treeViewtopics;
 		private ListBox listBoxHistory;
-		private Panel panel1;
-		private CheckBox checkBoxFollowLastTopic;
 		private Syncfusion.Windows.Forms.Chart.ChartControl chartControlHistory;
+		private MenuStrip menuStrip1;
+		private ToolStripMenuItem toolStripMenuItemTools;
+		private ToolStripMenuItem settingsToolStripMenuItem;
+		private ToolStripMenuItem toolStripMenuItemHelp;
+		private ToolStripMenuItem aboutToolStripMenuItem;
+		private Panel panel1;
 	}
 }
