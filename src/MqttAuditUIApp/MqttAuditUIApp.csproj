@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DeviceClientQueryLibrary\DeviceClientQueryLibrary.csproj" />
     <ProjectReference Include="..\MqttAuditApp\MqttTopicManager.csproj" />
     <ProjectReference Include="..\MQTTnet.Client.Extensions\MQTTnet.Client.Extensions.csproj" />
   </ItemGroup>

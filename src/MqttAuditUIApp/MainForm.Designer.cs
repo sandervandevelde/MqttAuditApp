@@ -40,6 +40,7 @@
 			toolStripMenuItemHelp = new ToolStripMenuItem();
 			aboutToolStripMenuItem = new ToolStripMenuItem();
 			panel1 = new Panel();
+			deviceClientsToolStripMenuItem = new ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)topicManagerBindingSource).BeginInit();
 			menuStrip1.SuspendLayout();
 			panel1.SuspendLayout();
@@ -107,7 +108,7 @@
 			// 
 			// toolStripMenuItemTools
 			// 
-			toolStripMenuItemTools.DropDownItems.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, pauseToolStripMenuItem });
+			toolStripMenuItemTools.DropDownItems.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, deviceClientsToolStripMenuItem, pauseToolStripMenuItem });
 			toolStripMenuItemTools.Name = "toolStripMenuItemTools";
 			toolStripMenuItemTools.Size = new Size(89, 38);
 			toolStripMenuItemTools.Text = "Tools";
@@ -137,7 +138,7 @@
 			// aboutToolStripMenuItem
 			// 
 			aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			aboutToolStripMenuItem.Size = new Size(212, 44);
+			aboutToolStripMenuItem.Size = new Size(359, 44);
 			aboutToolStripMenuItem.Text = "About";
 			aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
 			// 
@@ -149,6 +150,13 @@
 			panel1.Name = "panel1";
 			panel1.Size = new Size(1514, 43);
 			panel1.TabIndex = 1;
+			// 
+			// deviceClientsToolStripMenuItem
+			// 
+			deviceClientsToolStripMenuItem.Name = "deviceClientsToolStripMenuItem";
+			deviceClientsToolStripMenuItem.Size = new Size(359, 44);
+			deviceClientsToolStripMenuItem.Text = "Device clients";
+			deviceClientsToolStripMenuItem.Click += deviceClientsToolStripMenuItem_Click;
 			// 
 			// MainForm
 			// 
@@ -186,5 +194,6 @@
 		private ToolStripMenuItem aboutToolStripMenuItem;
 		private Panel panel1;
 		private ToolStripMenuItem pauseToolStripMenuItem;
+		private ToolStripMenuItem deviceClientsToolStripMenuItem;
 	}
 }

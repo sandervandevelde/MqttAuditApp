@@ -178,5 +178,12 @@ namespace MqttAuditUIApp
 		{
 			_config.Paused = pauseToolStripMenuItem.Checked;
 		}
+
+		private void deviceClientsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var formDeviceClient = new FormDeviceClient();
+
+			formDeviceClient.ShowDialog();
+		}
 	}
 }
