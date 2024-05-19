@@ -101,6 +101,7 @@ namespace DeviceClientQueryLibrary
 
 				var client = new Client();
 				client.Name = clientInList.Data.Name;
+				client.Enabled = clientInList.Data.State.Value.ToString() == "Enabled";
 
 				foreach (var topicTemplate in clientPublisherTopicTemplates)
 				{

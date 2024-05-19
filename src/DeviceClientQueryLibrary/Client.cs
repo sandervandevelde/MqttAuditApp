@@ -9,6 +9,8 @@
 
         public string Name { get; set; }
 
-		public List<Topic> Topics { get; private set; }
+        public bool Enabled { get; set; }
+
+        public List<Topic> Topics { get; private set; }
     }
 }

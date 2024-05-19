@@ -42,7 +42,9 @@ namespace MqttAuditUIApp
 
 				foreach (Client client in clients)
 				{
-					lines.Add($"Client {client.Name}");
+					var enabledText = client.Enabled ? "Enabled" : "Disabled";
+
+					lines.Add($"Client {client.Name} ({enabledText})");
 
 					foreach (var topic in client.Topics)
 					{
