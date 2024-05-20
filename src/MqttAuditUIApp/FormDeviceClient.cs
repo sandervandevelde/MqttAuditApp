@@ -27,7 +27,7 @@ namespace MqttAuditUIApp
 		private void FormDeviceClient_Activated(object sender, EventArgs e)
 		{
 			string? subscriptionId = Environment.GetEnvironmentVariable("mqtt-graph-subscriptionid");
-			string? resourceGroupName = Environment.GetEnvironmentVariable("mqtt-graph-resourcegroupname"); ;
+			string? resourceGroupName = Environment.GetEnvironmentVariable("mqtt-graph-resourcegroupname");
 			string? namespaceName = Environment.GetEnvironmentVariable("mqtt-graph-namespacename");
 
 			var lines = new List<string>();
