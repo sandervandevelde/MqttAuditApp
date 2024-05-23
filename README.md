@@ -6,11 +6,11 @@ This tool can visualize all incoming Azure EventGrid namespace MQTT broker messa
 
 Notice this only works when a device client is created with this ability.
 
+Depending on the first value received for a certain topic, a line chart or a list box is shown:
+
+![image](assets/explorer-mainform.png)
+
 ## What is offered? 
-
-Depending on the first value received for a certain topic, a bar chart or a list box is shown:
-
-![image](https://github.com/sandervandevelde/MqttAuditApp/assets/694737/abb7b58b-178e-4bd8-ac52-0d91dd1e6b8f)
 
 Per topic, the last (default) 50 values are remembered. This number is adjustable using the settings page.
 
