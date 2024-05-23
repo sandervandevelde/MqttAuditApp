@@ -1,6 +1,6 @@
 ﻿namespace MqttAuditUIApp
 {
-	partial class FormDeviceClient
+	partial class FormMqttBrokerClient
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			buttonClose = new Button();
-			textBoxDeviceClients = new TextBox();
+			textBoxDeviceClients = new RichTextBox();
 			SuspendLayout();
 			// 
 			// buttonClose
@@ -50,11 +50,12 @@
 			textBoxDeviceClients.Multiline = true;
 			textBoxDeviceClients.Name = "textBoxDeviceClients";
 			textBoxDeviceClients.ReadOnly = true;
-			textBoxDeviceClients.ScrollBars = ScrollBars.Both;
+			textBoxDeviceClients.ScrollBars = RichTextBoxScrollBars.Both;
 			textBoxDeviceClients.Size = new Size(741, 325);
 			textBoxDeviceClients.TabIndex = 2;
+			textBoxDeviceClients.Text = "List is being created...";
 			// 
-			// FormDeviceClient
+			// FormMqttBrokerClient
 			// 
 			AutoScaleDimensions = new SizeF(13F, 32F);
 			AutoScaleMode = AutoScaleMode.Font;
@@ -62,9 +63,9 @@
 			Controls.Add(textBoxDeviceClients);
 			Controls.Add(buttonClose);
 			FormBorderStyle = FormBorderStyle.SizableToolWindow;
-			Name = "FormDeviceClient";
+			Name = "FormMqttBrokerClient";
 			StartPosition = FormStartPosition.CenterScreen;
-			Text = "Device clients";
+			Text = "MQTT Broker clients";
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -72,6 +73,6 @@
 		#endregion
 
 		private Button buttonClose;
-		private TextBox textBoxDeviceClients;
+		private RichTextBox textBoxDeviceClients;
 	}
 }

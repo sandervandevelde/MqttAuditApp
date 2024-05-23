@@ -1,20 +1,11 @@
 ﻿using Azure.Identity;
 using DeviceClientQueryLibrary;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace MqttAuditUIApp
 {
-	public partial class FormDeviceClient : Form
+	public partial class FormMqttBrokerClient : Form
 	{
-		public FormDeviceClient()
+		public FormMqttBrokerClient()
 		{
 			InitializeComponent();
 		}
@@ -28,7 +19,7 @@ namespace MqttAuditUIApp
 		{
 			base.OnShown(e);
 
-			string? subscriptionId = Environment.GetEnvironmentVariable("mqtt-graph-subscriptionid");
+			string? subscriptionId = Environment.GetEnvironmentVariable("mqtt-graph-subscriptioniddd");
 			string? resourceGroupName = Environment.GetEnvironmentVariable("mqtt-graph-resourcegroupname");
 			string? namespaceName = Environment.GetEnvironmentVariable("mqtt-graph-namespacename");
 

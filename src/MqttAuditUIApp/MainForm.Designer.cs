@@ -37,7 +37,7 @@ namespace MqttAuditUIApp
 			menuStrip1 = new MenuStrip();
 			toolStripMenuItemTools = new ToolStripMenuItem();
 			settingsToolStripMenuItem = new ToolStripMenuItem();
-			deviceClientsToolStripMenuItem = new ToolStripMenuItem();
+			mqttBrokerClientsToolStripMenuItem = new ToolStripMenuItem();
 			pauseToolStripMenuItem = new ToolStripMenuItem();
 			toolStripMenuItemHelp = new ToolStripMenuItem();
 			aboutToolStripMenuItem = new ToolStripMenuItem();
@@ -84,36 +84,36 @@ namespace MqttAuditUIApp
 			menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItemTools, toolStripMenuItemHelp });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new Size(1514, 40);
+			menuStrip1.Size = new Size(1514, 42);
 			menuStrip1.TabIndex = 1;
 			menuStrip1.Text = "menuStrip1";
 			// 
 			// toolStripMenuItemTools
 			// 
-			toolStripMenuItemTools.DropDownItems.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, deviceClientsToolStripMenuItem, pauseToolStripMenuItem });
+			toolStripMenuItemTools.DropDownItems.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, mqttBrokerClientsToolStripMenuItem, pauseToolStripMenuItem });
 			toolStripMenuItemTools.Name = "toolStripMenuItemTools";
-			toolStripMenuItemTools.Size = new Size(89, 36);
+			toolStripMenuItemTools.Size = new Size(89, 38);
 			toolStripMenuItemTools.Text = "Tools";
 			// 
 			// settingsToolStripMenuItem
 			// 
 			settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-			settingsToolStripMenuItem.Size = new Size(294, 44);
+			settingsToolStripMenuItem.Size = new Size(363, 44);
 			settingsToolStripMenuItem.Text = "Settings";
 			settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
 			// 
-			// deviceClientsToolStripMenuItem
+			// mqttBrokerClientsToolStripMenuItem
 			// 
-			deviceClientsToolStripMenuItem.Name = "deviceClientsToolStripMenuItem";
-			deviceClientsToolStripMenuItem.Size = new Size(294, 44);
-			deviceClientsToolStripMenuItem.Text = "Device clients";
-			deviceClientsToolStripMenuItem.Click += deviceClientsToolStripMenuItem_Click;
+			mqttBrokerClientsToolStripMenuItem.Name = "mqttBrokerClientsToolStripMenuItem";
+			mqttBrokerClientsToolStripMenuItem.Size = new Size(363, 44);
+			mqttBrokerClientsToolStripMenuItem.Text = "MQTT Broker clients";
+			mqttBrokerClientsToolStripMenuItem.Click += mqttBrokerClientsToolStripMenuItem_Click;
 			// 
 			// pauseToolStripMenuItem
 			// 
 			pauseToolStripMenuItem.CheckOnClick = true;
 			pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-			pauseToolStripMenuItem.Size = new Size(294, 44);
+			pauseToolStripMenuItem.Size = new Size(363, 44);
 			pauseToolStripMenuItem.Text = "Pause";
 			pauseToolStripMenuItem.Click += pauseToolStripMenuItem_Click;
 			// 
@@ -121,7 +121,7 @@ namespace MqttAuditUIApp
 			// 
 			toolStripMenuItemHelp.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
 			toolStripMenuItemHelp.Name = "toolStripMenuItemHelp";
-			toolStripMenuItemHelp.Size = new Size(84, 36);
+			toolStripMenuItemHelp.Size = new Size(84, 38);
 			toolStripMenuItemHelp.Text = "Help";
 			// 
 			// aboutToolStripMenuItem
@@ -205,7 +205,7 @@ namespace MqttAuditUIApp
 		private ToolStripMenuItem aboutToolStripMenuItem;
 		private Panel panel1;
 		private ToolStripMenuItem pauseToolStripMenuItem;
-		private ToolStripMenuItem deviceClientsToolStripMenuItem;
+		private ToolStripMenuItem mqttBrokerClientsToolStripMenuItem;
 		private System.Windows.Forms.DataVisualization.Charting.Chart chartDecimals;
 		private SplitContainer splitContainer1;
 	}

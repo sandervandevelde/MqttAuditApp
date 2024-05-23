@@ -214,9 +214,9 @@ namespace MqttAuditUIApp
 			_config.Paused = pauseToolStripMenuItem.Checked;
 		}
 
-		private void deviceClientsToolStripMenuItem_Click(object sender, EventArgs e)
+		private void mqttBrokerClientsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var formDeviceClient = new FormDeviceClient();
+			var formDeviceClient = new FormMqttBrokerClient();
 
 			formDeviceClient.ShowDialog();
 		}
