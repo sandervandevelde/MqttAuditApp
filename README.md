@@ -4,7 +4,7 @@
 
 This tool can visualize all incoming Azure EventGrid namespace MQTT broker messages on all topics. It simply listens to '#'.
 
-Notice this only works when a device client is created with this ability.
+Notice this only works when a specific MQTT broker client is created with this ability.
 
 Depending on the first value received for a certain topic, a line chart or a list box is shown:
 
@@ -20,13 +20,13 @@ A Topic filter can be set on the settings page so that only topics containing th
 
 The menu on the main page contains a Pause toggle. This pauses the representation of the incoming messages. Messages will still be received and stored even when the representation is paused. Once a pause is disabled, previously received messages are shown only when a new message is received. 
 
-## Device clients and their topics
+## MQTT Broker clients and their topics
 
-As an extra feature this application can show all registered devices and their associated topics.
+As an extra feature this application can show all registered clients and their associated topics.
 
 This feature is based on this [repo](https://github.com/sandervandevelde/MqttBrokerGraphApp). 
 
-Please supply the following environment variables:
+Please supply the following (extra) environment variables:
 
 ```
 mqtt-graph-subscriptionid
@@ -36,13 +36,15 @@ mqtt-graph-namespacename
 
 With this information, the graph is built up using Azure CLI authentication.
 
-you can authenticate the app via:
+You must also authenticate the app via the Azure CLI.
+
+Run on the dos prompt:
 
 ```
 az login
 ```
 
-If this works, a dialog is shown via the 'Device clients' menu:
+After this, a dialog is filled via the 'MQTT Broker clients' menu:
 
 ![image](https://github.com/sandervandevelde/MqttAuditApp/assets/694737/176da3c7-ef14-4ac1-946d-56c07760b0e7)
 
