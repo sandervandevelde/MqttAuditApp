@@ -65,7 +65,6 @@
 			Name = "FormDeviceClient";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Device clients";
-			Activated += FormDeviceClient_Activated;
 			ResumeLayout(false);
 			PerformLayout();
 		}

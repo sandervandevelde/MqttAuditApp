@@ -24,15 +24,19 @@ namespace MqttAuditUIApp
 			this.Close();
 		}
 
-		private void FormDeviceClient_Activated(object sender, EventArgs e)
+		protected override void OnShown(EventArgs e)
 		{
+			base.OnShown(e);
+
 			string? subscriptionId = Environment.GetEnvironmentVariable("mqtt-graph-subscriptionid");
 			string? resourceGroupName = Environment.GetEnvironmentVariable("mqtt-graph-resourcegroupname");
 			string? namespaceName = Environment.GetEnvironmentVariable("mqtt-graph-namespacename");
 
 			var lines = new List<string>();
 
-			this.Cursor = Cursors.WaitCursor;
+			var oldCursor = Cursor.Current;
+
+			this.Cursor = Cursors.WaitCursor;	
 
 			try
 			{
@@ -62,7 +66,7 @@ namespace MqttAuditUIApp
 			}
 			finally
 			{
-				this.Cursor = Cursors.Default;
+				this.Cursor = oldCursor;
 			}
 
 			textBoxDeviceClients.Lines = lines.ToArray();
