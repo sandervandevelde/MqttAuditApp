@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace MqttAuditUIApp
 {
@@ -29,7 +30,6 @@ namespace MqttAuditUIApp
 
 			_config = config;
 		}
-
 
 		public MainForm()
 		{
@@ -76,8 +76,6 @@ namespace MqttAuditUIApp
 			// LISTEN FOR INCOMING MESSAGES
 			mqttClient.ApplicationMessageReceivedAsync += (s) =>
 			{
-				Console.WriteLine($"Client '{s.ClientId}' received on topic '{s.ApplicationMessage.Topic}' the following message:\n{s.ApplicationMessage.ConvertPayloadToString()}");
-
 				_topicManager.Receive(s.ApplicationMessage.Topic, s.ApplicationMessage.ConvertPayloadToString());
 
 				this.Invoke(delegate ()
@@ -147,10 +145,10 @@ namespace MqttAuditUIApp
 			var orderedHistory = (e.Node.Tag as TopicHistory).OrderBy(x => x.Key);
 
 			// check if we need to show floats
-			float dummy;
-			var isFloat = float.TryParse(orderedHistory.First().Value, out dummy);
+			double dummy;
+			var isDouble = double.TryParse(orderedHistory.First().Value, CultureInfo.InvariantCulture, out dummy);
 
-			if (!isFloat)
+			if (!isDouble)
 			{
 				listBoxHistory.BringToFront();
 
@@ -168,7 +166,9 @@ namespace MqttAuditUIApp
 				foreach (var hist in orderedHistory)
 				{
 					_timeDecimalValues.Add(hist.Key);
-					_fieldDecimalValues.Add(Convert.ToDouble(hist.Value));
+
+					var d = double.Parse(hist.Value, CultureInfo.InvariantCulture);
+					_fieldDecimalValues.Add(d);
 					_serieDecimals.Points.DataBindXY(_timeDecimalValues, _fieldDecimalValues);
 				}
 			}
@@ -219,11 +219,6 @@ namespace MqttAuditUIApp
 			var formDeviceClient = new FormDeviceClient();
 
 			formDeviceClient.ShowDialog();
-		}
-
-		private void listBoxHistory_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
 		}
 	}
 }

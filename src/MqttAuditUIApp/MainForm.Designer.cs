@@ -77,7 +77,6 @@ namespace MqttAuditUIApp
 			listBoxHistory.Name = "listBoxHistory";
 			listBoxHistory.Size = new Size(1006, 799);
 			listBoxHistory.TabIndex = 1;
-			listBoxHistory.SelectedIndexChanged += listBoxHistory_SelectedIndexChanged;
 			// 
 			// menuStrip1
 			// 
