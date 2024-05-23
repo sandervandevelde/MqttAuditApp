@@ -19,7 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Syncfusion.Chart.Windows" Version="25.2.3" />
+	  <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
+
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace MqttAuditUIApp
+﻿using System;
+
+namespace MqttAuditUIApp
 {
 	partial class MainForm
 	{
@@ -32,18 +34,19 @@
 			topicManagerBindingSource = new BindingSource(components);
 			treeViewtopics = new TreeView();
 			listBoxHistory = new ListBox();
-			chartControlHistory = new Syncfusion.Windows.Forms.Chart.ChartControl();
 			menuStrip1 = new MenuStrip();
 			toolStripMenuItemTools = new ToolStripMenuItem();
 			settingsToolStripMenuItem = new ToolStripMenuItem();
+			deviceClientsToolStripMenuItem = new ToolStripMenuItem();
 			pauseToolStripMenuItem = new ToolStripMenuItem();
 			toolStripMenuItemHelp = new ToolStripMenuItem();
 			aboutToolStripMenuItem = new ToolStripMenuItem();
 			panel1 = new Panel();
-			deviceClientsToolStripMenuItem = new ToolStripMenuItem();
+			chartDecimals = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			((System.ComponentModel.ISupportInitialize)topicManagerBindingSource).BeginInit();
 			menuStrip1.SuspendLayout();
 			panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)chartDecimals).BeginInit();
 			SuspendLayout();
 			// 
 			// topicManagerBindingSource
@@ -57,7 +60,7 @@
 			treeViewtopics.Location = new Point(0, 43);
 			treeViewtopics.Name = "treeViewtopics";
 			treeViewtopics.PathSeparator = "/";
-			treeViewtopics.Size = new Size(752, 799);
+			treeViewtopics.Size = new Size(720, 799);
 			treeViewtopics.TabIndex = 0;
 			treeViewtopics.AfterSelect += treeViewtopics_AfterSelect;
 			// 
@@ -65,36 +68,10 @@
 			// 
 			listBoxHistory.Dock = DockStyle.Fill;
 			listBoxHistory.FormattingEnabled = true;
-			listBoxHistory.Location = new Point(752, 43);
+			listBoxHistory.Location = new Point(720, 43);
 			listBoxHistory.Name = "listBoxHistory";
-			listBoxHistory.Size = new Size(762, 799);
+			listBoxHistory.Size = new Size(794, 799);
 			listBoxHistory.TabIndex = 1;
-			// 
-			// chartControlHistory
-			// 
-			chartControlHistory.ChartArea.CursorLocation = new Point(0, 0);
-			chartControlHistory.ChartArea.CursorReDraw = false;
-			chartControlHistory.IsWindowLess = false;
-			// 
-			// 
-			// 
-			chartControlHistory.Legend.Location = new Point(643, 31);
-			chartControlHistory.Legend.Visible = false;
-			chartControlHistory.Localize = null;
-			chartControlHistory.Location = new Point(592, 155);
-			chartControlHistory.Name = "chartControlHistory";
-			chartControlHistory.PrimaryXAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
-			chartControlHistory.PrimaryXAxis.Margin = true;
-			chartControlHistory.PrimaryYAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
-			chartControlHistory.PrimaryYAxis.Margin = true;
-			chartControlHistory.Size = new Size(800, 600);
-			chartControlHistory.TabIndex = 2;
-			// 
-			// 
-			// 
-			chartControlHistory.Title.Name = "Default";
-			chartControlHistory.ToolBar.ButtonSize = new Size(44, 44);
-			chartControlHistory.VisualTheme = "";
 			// 
 			// menuStrip1
 			// 
@@ -102,7 +79,7 @@
 			menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItemTools, toolStripMenuItemHelp });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new Size(1514, 42);
+			menuStrip1.Size = new Size(1514, 40);
 			menuStrip1.TabIndex = 1;
 			menuStrip1.Text = "menuStrip1";
 			// 
@@ -110,21 +87,28 @@
 			// 
 			toolStripMenuItemTools.DropDownItems.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, deviceClientsToolStripMenuItem, pauseToolStripMenuItem });
 			toolStripMenuItemTools.Name = "toolStripMenuItemTools";
-			toolStripMenuItemTools.Size = new Size(89, 38);
+			toolStripMenuItemTools.Size = new Size(89, 36);
 			toolStripMenuItemTools.Text = "Tools";
 			// 
 			// settingsToolStripMenuItem
 			// 
 			settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-			settingsToolStripMenuItem.Size = new Size(359, 44);
+			settingsToolStripMenuItem.Size = new Size(294, 44);
 			settingsToolStripMenuItem.Text = "Settings";
 			settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
+			// 
+			// deviceClientsToolStripMenuItem
+			// 
+			deviceClientsToolStripMenuItem.Name = "deviceClientsToolStripMenuItem";
+			deviceClientsToolStripMenuItem.Size = new Size(294, 44);
+			deviceClientsToolStripMenuItem.Text = "Device clients";
+			deviceClientsToolStripMenuItem.Click += deviceClientsToolStripMenuItem_Click;
 			// 
 			// pauseToolStripMenuItem
 			// 
 			pauseToolStripMenuItem.CheckOnClick = true;
 			pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-			pauseToolStripMenuItem.Size = new Size(359, 44);
+			pauseToolStripMenuItem.Size = new Size(294, 44);
 			pauseToolStripMenuItem.Text = "Pause";
 			pauseToolStripMenuItem.Click += pauseToolStripMenuItem_Click;
 			// 
@@ -132,13 +116,13 @@
 			// 
 			toolStripMenuItemHelp.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
 			toolStripMenuItemHelp.Name = "toolStripMenuItemHelp";
-			toolStripMenuItemHelp.Size = new Size(84, 38);
+			toolStripMenuItemHelp.Size = new Size(84, 36);
 			toolStripMenuItemHelp.Text = "Help";
 			// 
 			// aboutToolStripMenuItem
 			// 
 			aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			aboutToolStripMenuItem.Size = new Size(359, 44);
+			aboutToolStripMenuItem.Size = new Size(212, 44);
 			aboutToolStripMenuItem.Text = "About";
 			aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
 			// 
@@ -151,19 +135,20 @@
 			panel1.Size = new Size(1514, 43);
 			panel1.TabIndex = 1;
 			// 
-			// deviceClientsToolStripMenuItem
+			// chartDecimals
 			// 
-			deviceClientsToolStripMenuItem.Name = "deviceClientsToolStripMenuItem";
-			deviceClientsToolStripMenuItem.Size = new Size(359, 44);
-			deviceClientsToolStripMenuItem.Text = "Device clients";
-			deviceClientsToolStripMenuItem.Click += deviceClientsToolStripMenuItem_Click;
+			chartDecimals.Location = new Point(836, 143);
+			chartDecimals.Name = "chartDecimals";
+			chartDecimals.Size = new Size(600, 600);
+			chartDecimals.TabIndex = 2;
+			chartDecimals.Text = "chart2";
 			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(13F, 32F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1514, 842);
-			Controls.Add(chartControlHistory);
+			Controls.Add(chartDecimals);
 			Controls.Add(listBoxHistory);
 			Controls.Add(treeViewtopics);
 			Controls.Add(panel1);
@@ -179,6 +164,7 @@
 			menuStrip1.PerformLayout();
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)chartDecimals).EndInit();
 			ResumeLayout(false);
 		}
 
@@ -186,7 +172,6 @@
 		private BindingSource topicManagerBindingSource;
 		private TreeView treeViewtopics;
 		private ListBox listBoxHistory;
-		private Syncfusion.Windows.Forms.Chart.ChartControl chartControlHistory;
 		private MenuStrip menuStrip1;
 		private ToolStripMenuItem toolStripMenuItemTools;
 		private ToolStripMenuItem settingsToolStripMenuItem;
@@ -195,5 +180,6 @@
 		private Panel panel1;
 		private ToolStripMenuItem pauseToolStripMenuItem;
 		private ToolStripMenuItem deviceClientsToolStripMenuItem;
+		private System.Windows.Forms.DataVisualization.Charting.Chart chartDecimals;
 	}
 }

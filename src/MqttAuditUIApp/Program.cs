@@ -14,8 +14,6 @@ namespace MqttAuditUIApp
 			// see https://aka.ms/applicationconfiguration.
 			ApplicationConfiguration.Initialize();
 
-			Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("");
-
 			var config = new Config();
 
 			var _topicManager = new TopicManager(config);

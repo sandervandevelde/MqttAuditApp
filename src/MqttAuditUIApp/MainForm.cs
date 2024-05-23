@@ -4,8 +4,9 @@ using MQTTnet;
 using MqttTopicManager;
 using System.Text;
 using System.Windows.Forms;
-using Syncfusion.Windows.Forms.Chart;
 using System.Xml.Linq;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Collections.Generic;
 
 namespace MqttAuditUIApp
 {
@@ -15,7 +16,10 @@ namespace MqttAuditUIApp
 
 		private TopicManager _topicManager;
 
-		ChartSeries _chartSeries;
+		private Series _serieDecimals;
+
+		private List<DateTime> _timeDecimalValues = new();
+		private List<double> _fieldDecimalValues = new();
 
 		bool _onceAlready = false;
 
@@ -26,13 +30,40 @@ namespace MqttAuditUIApp
 			_config = config;
 		}
 
+
 		public MainForm()
 		{
 			InitializeComponent();
+		}
 
-			_chartSeries = new ChartSeries("MQTT");
-			chartControlHistory.Series.Add(_chartSeries);
-			chartControlHistory.PrimaryXAxis.ValueType = ChartValueType.DateTime;
+		protected override void OnShown(EventArgs e)
+		{
+			base.OnShown(e);
+
+			chartDecimals.ChartAreas.Clear();
+			var chartAreaDecimals = chartDecimals.ChartAreas.Add("chartArea");
+			chartAreaDecimals.AxisX.LabelStyle.Format = "HH:mm:ss";
+			chartAreaDecimals.AxisX.LabelStyle.Angle = 45;
+			chartAreaDecimals.AxisX.LabelAutoFitStyle = 
+				LabelAutoFitStyles.DecreaseFont 
+					| LabelAutoFitStyles.IncreaseFont 
+					| LabelAutoFitStyles.WordWrap;
+
+			chartDecimals.Series.Clear();
+			_serieDecimals = chartDecimals.Series.Add("serie1");
+			_serieDecimals.ChartType = SeriesChartType.Line;
+			_serieDecimals.MarkerStyle = MarkerStyle.Circle;
+			_serieDecimals.BorderWidth = 4;
+			_serieDecimals.ShadowOffset = 1;
+			_serieDecimals.Color = Color.Red;
+
+
+			_serieDecimals.IsVisibleInLegend = false;
+
+			_serieDecimals.XValueType = ChartValueType.DateTime;
+			_serieDecimals.YValueType = ChartValueType.Double;
+
+			_serieDecimals.Points.Clear();
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -78,7 +109,8 @@ namespace MqttAuditUIApp
 					if (treeViewtopics.Nodes.Count == 0)
 					{
 						listBoxHistory.Items.Clear();
-						_chartSeries.Points.Clear();
+						_timeDecimalValues.Clear();
+						_fieldDecimalValues.Clear();
 					}
 					else
 					{
@@ -109,7 +141,8 @@ namespace MqttAuditUIApp
 			}
 
 			listBoxHistory.Items.Clear();
-			_chartSeries.Points.Clear();
+			_timeDecimalValues.Clear();
+			_fieldDecimalValues.Clear();
 
 			var orderedHistory = (e.Node.Tag as TopicHistory).OrderBy(x => x.Key);
 
@@ -130,11 +163,13 @@ namespace MqttAuditUIApp
 			else
 			{
 				// show floats
-				chartControlHistory.BringToFront();
+				chartDecimals.BringToFront();
 
 				foreach (var hist in orderedHistory)
 				{
-					_chartSeries.Points.Add(hist.Key, Convert.ToDouble(hist.Value));
+					_timeDecimalValues.Add(hist.Key);
+					_fieldDecimalValues.Add(Convert.ToDouble(hist.Value));
+					_serieDecimals.Points.DataBindXY(_timeDecimalValues, _fieldDecimalValues);
 				}
 			}
 		}
@@ -156,8 +191,8 @@ namespace MqttAuditUIApp
 
 		private void UpdateHistory()
 		{
-			chartControlHistory.Location = listBoxHistory.Location;
-			chartControlHistory.Size = listBoxHistory.Size;
+			chartDecimals.Location = listBoxHistory.Location;
+			chartDecimals.Size = listBoxHistory.Size;
 		}
 
 		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
