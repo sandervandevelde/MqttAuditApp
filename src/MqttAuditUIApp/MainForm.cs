@@ -44,9 +44,9 @@ namespace MqttAuditUIApp
 			var chartAreaDecimals = chartDecimals.ChartAreas.Add("chartArea");
 			chartAreaDecimals.AxisX.LabelStyle.Format = "HH:mm:ss";
 			chartAreaDecimals.AxisX.LabelStyle.Angle = 45;
-			chartAreaDecimals.AxisX.LabelAutoFitStyle = 
-				LabelAutoFitStyles.DecreaseFont 
-					| LabelAutoFitStyles.IncreaseFont 
+			chartAreaDecimals.AxisX.LabelAutoFitStyle =
+				LabelAutoFitStyles.DecreaseFont
+					| LabelAutoFitStyles.IncreaseFont
 					| LabelAutoFitStyles.WordWrap;
 
 			chartDecimals.Series.Clear();
@@ -219,6 +219,11 @@ namespace MqttAuditUIApp
 			var formDeviceClient = new FormDeviceClient();
 
 			formDeviceClient.ShowDialog();
+		}
+
+		private void listBoxHistory_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
