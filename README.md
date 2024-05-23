@@ -1,4 +1,4 @@
-# Azure EventGrid namespace Mqtt Audit App
+# Azure EventGrid namespace MQTT Explorer
 
 ## Introduction
 
@@ -69,11 +69,7 @@ The following EventGrid namespace MQTT client settings must be added to your MQT
 
 This demonstration is created as a Winform application.
 
-A (community) license of the [Syncfusion](https://www.syncfusion.com/) library is used for the bar chart.
-
-The code is checked in without a key so you get a notification when you start the application.
-
-You can rebuild the tool using your own valid key.
+The chart is based on this excellent [WinForms.DataVisualization](https://github.com/kirsan31/winforms-datavisualization) library.
 
 ## Contributions
 
