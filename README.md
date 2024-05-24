@@ -10,6 +10,8 @@ Depending on the first value received for a certain topic, a line chart or a lis
 
 ![image](assets/explorer-mainform.png)
 
+See also this [blog post](https://sandervandevelde.wordpress.com/2024/05/25/azure-eventgrid-namespace-mqtt-explorer/) for an elaborate walk-through. 
+
 ## What is offered? 
 
 Per topic, the last (default) 50 values are remembered. This number is adjustable using the settings page.
