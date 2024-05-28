@@ -1,7 +1,5 @@
 # Azure EventGrid namespace MQTT Explorer
 
-## Introduction
-
 This explorer tool can visualize all incoming Azure EventGrid namespace MQTT broker messages on all topics. An audit client simply listens to '#'.
 
 Notice this only works when a specific MQTT broker client is created with this ability.
